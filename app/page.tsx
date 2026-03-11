@@ -10,6 +10,7 @@ import SubjectsPage from './components/SubjectsPage';
 import LessonsPage from './components/LessonsPage';
 import QuizzesPage from './components/QuizzesPage';
 import PaymentsPage from './components/PaymentsPage';
+import ResourcesPage from './components/ResourcesPage';
 import LoginPage from './components/LoginPage';
 import { getAccessToken, clearAuth } from './lib/api';
 
@@ -23,6 +24,7 @@ const pages: Record<Page, React.ReactNode> = {
   lessons: <LessonsPage />,
   quizzes: <QuizzesPage />,
   payments: <PaymentsPage />,
+  resources: <ResourcesPage />,
 };
 
 export default function Home() {

@@ -132,6 +132,15 @@ export const subjectsApi = {
     delete: (id: string) => fetchApi(`subjects/${id}`, { method: 'DELETE' }),
 };
 
+// Resources
+export const resourcesApi = {
+    getAll: () => fetchApi('resources/admin/all'),
+    getById: (id: string) => fetchApi(`resources/${id}`),
+    create: (formData: FormData) => fetchApiFormData('resources', formData),
+    update: (id: string, formData: FormData) => fetchApiFormData(`resources/${id}`, formData, 'PATCH'),
+    delete: (id: string) => fetchApi(`resources/${id}`, { method: 'DELETE' }),
+};
+
 // Lessons
 export const lessonsApi = {
     getBySubject: (subjectId: string) => fetchApi(`lessons/subject/${subjectId}`),
