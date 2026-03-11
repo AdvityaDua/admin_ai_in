@@ -13,6 +13,7 @@ import {
     LogOut,
     ChevronLeft,
     ChevronRight,
+    FileText,
 } from 'lucide-react';
 
 export type Page =
@@ -24,7 +25,8 @@ export type Page =
     | 'payments'
     | 'subjects'
     | 'lessons'
-    | 'quizzes';
+    | 'quizzes'
+    | 'resources';
 
 const navItems: { id: Page; label: string; icon: React.ReactNode; group: string }[] = [
     { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard size={18} />, group: 'Overview' },
@@ -36,6 +38,7 @@ const navItems: { id: Page; label: string; icon: React.ReactNode; group: string 
     { id: 'subjects', label: 'Subjects', icon: <BookOpen size={18} />, group: 'Content' },
     { id: 'lessons', label: 'Lessons', icon: <GraduationCap size={18} />, group: 'Content' },
     { id: 'quizzes', label: 'Quizzes', icon: <HelpCircle size={18} />, group: 'Content' },
+    { id: 'resources', label: 'Resources', icon: <FileText size={18} />, group: 'Content' },
 ];
 
 export default function Sidebar({
