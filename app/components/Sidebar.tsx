@@ -14,6 +14,7 @@ import {
     ChevronLeft,
     ChevronRight,
     FileText,
+    Ticket
 } from 'lucide-react';
 
 export type Page =
@@ -26,7 +27,8 @@ export type Page =
     | 'subjects'
     | 'lessons'
     | 'quizzes'
-    | 'resources';
+    | 'resources'
+    | 'discounts';
 
 const navItems: { id: Page; label: string; icon: React.ReactNode; group: string }[] = [
     { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard size={18} />, group: 'Overview' },
@@ -35,6 +37,7 @@ const navItems: { id: Page; label: string; icon: React.ReactNode; group: string 
     { id: 'users', label: 'Users', icon: <UserCog size={18} />, group: 'Management' },
     { id: 'subscriptions', label: 'Subscriptions', icon: <CreditCard size={18} />, group: 'Management' },
     { id: 'payments', label: 'Payments', icon: <CreditCard size={18} />, group: 'Management' },
+    { id: 'discounts', label: 'Discounts', icon: <Ticket size={18} />, group: 'Management' },
     { id: 'subjects', label: 'Subjects', icon: <BookOpen size={18} />, group: 'Content' },
     { id: 'lessons', label: 'Lessons', icon: <GraduationCap size={18} />, group: 'Content' },
     { id: 'quizzes', label: 'Quizzes', icon: <HelpCircle size={18} />, group: 'Content' },

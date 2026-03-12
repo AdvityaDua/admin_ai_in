@@ -104,6 +104,7 @@ export const analyticsApi = {
     getRecentSessions: (limit = 20) => fetchApi(`analytics/admin/recent-sessions?limit=${limit}`),
     getPageViews: (limit = 50) => fetchApi(`analytics/pageviews?limit=${limit}`),
     getPopularPages: (limit = 10) => fetchApi(`analytics/admin/popular-pages?limit=${limit}`),
+    getAIUsageStats: () => fetchApi('analytics/admin/ai-usage'),
 };
 
 // Subscriptions
@@ -156,4 +157,22 @@ export const quizzesApi = {
     getById: (id: string) => fetchApi(`quizzes/${id}`),
     create: (data: any) => fetchApi('quizzes', { method: 'POST', body: JSON.stringify(data) }),
     delete: (id: string) => fetchApi(`quizzes/${id}`, { method: 'DELETE' }),
+};
+
+// Discounts & Coupons (Admin)
+export const discountsApi = {
+    getAll: (type?: string, isActive?: boolean) => {
+        const params = new URLSearchParams();
+        if (type) params.append('type', type);
+        if (isActive !== undefined) params.append('isActive', String(isActive));
+        const q = params.toString();
+        return fetchApi(`discounts/admin/coupons${q ? `?${q}` : ''}`);
+    },
+    getAnalytics: () => fetchApi('discounts/admin/analytics'),
+    getStats: (id: string) => fetchApi(`discounts/admin/coupons/${id}/stats`),
+    create: (data: any) => fetchApi('discounts/admin/coupons', { method: 'POST', body: JSON.stringify(data) }),
+    update: (id: string, data: any) => fetchApi(`discounts/admin/coupons/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+    toggle: (id: string) => fetchApi(`discounts/admin/coupons/${id}/toggle`, { method: 'PATCH' }),
+    delete: (id: string) => fetchApi(`discounts/admin/coupons/${id}`, { method: 'DELETE' }),
+    generateReferral: (data: any) => fetchApi('discounts/admin/coupons/generate-referral', { method: 'POST', body: JSON.stringify(data) }),
 };

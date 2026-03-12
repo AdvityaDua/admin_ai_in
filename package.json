@@ -19,7 +19,8 @@
     "react-hot-toast": "^2.6.0",
     "react-markdown": "^10.1.0",
     "recharts": "^3.8.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "socket.io-client": "^4.8.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
