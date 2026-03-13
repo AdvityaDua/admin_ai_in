@@ -36,7 +36,7 @@ import {
     Pie,
     Cell,
 } from 'recharts';
-import { analyticsApi, paymentsApi } from '../lib/api';
+import { analyticsApi, paymentsApi, API_BASE } from '../lib/api';
 
 const PIE_COLORS = ['#6c63ff', '#00d4aa', '#ffa726', '#ef5350', '#3b82f6', '#f472b6'];
 
@@ -171,6 +171,30 @@ export default function DashboardPage() {
             })
             .catch(console.error)
             .finally(() => setLoading(false));
+
+        // Real-time synchronization
+        import('socket.io-client').then(({ io }) => {
+            const socket = io(`${API_BASE}/analytics`, {
+                transports: ['websocket'],
+                reconnection: true,
+                query: { isAdmin: 'true' }
+            });
+
+            socket.on('aiUsageUpdated', (usageStats) => {
+                console.log('🔄 Dashboard: AI Usage Update Received');
+                setData(prev => prev ? {
+                    ...prev,
+                    overview: {
+                        ...prev.overview,
+                        totalRevenue: usageStats.totalRevenue, // Sync revenue from AI cost stream if applicable
+                    }
+                } : null);
+            });
+
+            return () => {
+                socket.disconnect();
+            };
+        });
     }, []);
 
     if (loading) {
