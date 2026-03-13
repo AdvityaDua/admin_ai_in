@@ -11,6 +11,7 @@ import LessonsPage from './components/LessonsPage';
 import QuizzesPage from './components/QuizzesPage';
 import PaymentsPage from './components/PaymentsPage';
 import ResourcesPage from './components/ResourcesPage';
+import AIUsagePage from './components/AIUsagePage';
 import LoginPage from './components/LoginPage';
 import { getAccessToken, clearAuth } from './lib/api';
 
@@ -25,6 +26,7 @@ const pages: Record<Page, React.ReactNode> = {
   quizzes: <QuizzesPage />,
   payments: <PaymentsPage />,
   resources: <ResourcesPage />,
+  'ai-usage': <AIUsagePage />,
 };
 
 export default function Home() {

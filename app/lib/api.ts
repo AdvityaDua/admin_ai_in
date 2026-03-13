@@ -104,6 +104,7 @@ export const analyticsApi = {
     getRecentSessions: (limit = 20) => fetchApi(`analytics/admin/recent-sessions?limit=${limit}`),
     getPageViews: (limit = 50) => fetchApi(`analytics/pageviews?limit=${limit}`),
     getPopularPages: (limit = 10) => fetchApi(`analytics/admin/popular-pages?limit=${limit}`),
+    getAIUsageStats: () => fetchApi('analytics/admin/ai-usage'),
 };
 
 // Subscriptions
