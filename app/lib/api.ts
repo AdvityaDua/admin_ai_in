@@ -1,29 +1,18 @@
 export const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
-// Auth token management
 let accessToken: string | null = null;
 
 export function setAccessToken(token: string | null) {
     accessToken = token;
-    if (token) {
-        localStorage.setItem('admin_token', token);
-    } else {
-        localStorage.removeItem('admin_token');
-    }
 }
 
 export function getAccessToken(): string | null {
-    if (accessToken) return accessToken;
-    if (typeof window !== 'undefined') {
-        accessToken = localStorage.getItem('admin_token');
-    }
     return accessToken;
 }
 
 export function clearAuth() {
     accessToken = null;
     if (typeof window !== 'undefined') {
-        localStorage.removeItem('admin_token');
         localStorage.removeItem('admin_user');
     }
 }
